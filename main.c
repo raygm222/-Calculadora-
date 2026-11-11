@@ -1,36 +1,42 @@
 #include <stdio.h>
 
 void soma(){
-    int a,b;
+    float a,b;
     printf ("Digite o primeiro número:");
-    scanf ("%d", &a);
+    scanf ("%f", &a);
     printf ("Digite o segundo número:");
-    scanf ("%d", &b);
-    printf ("Resultado: %d + %d = %d\n", a,b,a+b);
+    scanf ("%f", &b);
+    printf ("Resultado: %f + %f = %.2f\n", a,b,a+b);
 }
 void subtração(){
-    int a,b;
+    float a,b;
     printf ("Digite o primeiro número:");
-    scanf ("%d", &a);
+    scanf ("%f", &a);
     printf ("Digite o segundo número:");
-    scanf ("%d", &b);
-    printf ("Resultado: %d - %d = %d\n", a,b,a-b);
+    scanf ("%f", &b);
+    printf ("Resultado: %f - %f = %2.f\n", a,b,a-b);
 }
 void multiplicação(){
-    int a,b;
+    float a,b;
     printf ("Digite o primeiro número:");
-    scanf ("%d", &a);
+    scanf ("%f", &a);
     printf ("Digite o segundo número:");
-    scanf ("%d", &b);
-    printf ("Resultado: %d * %d = %d\n", a,b,a*b);
+    scanf ("%f", &b);
+    printf ("Resultado: %f * %f = %.2f\n", a,b,a*b);
 }
 void divisão(){
-    int a,b;
+    float a,b;
     printf ("Digite o primeiro número:");
-    scanf ("%d", &a);
+    scanf ("%f", &a);
     printf ("Digite o segundo número:");
-    scanf ("%d", &b);
-    printf ("Resultado: %d ÷ %d = %d\n", a,b,a/b);
+    scanf ("%f", &b);
+    
+    while (b==0){
+        printf ("Erro: Divisão por zero não é peemitida.\n");
+        printf ("Digite outro número:");
+        scanf ("%f", &b);
+    } 
+    printf ("Resultado: %f ÷ %f = %.2f\n", a,b,a/b);
 }
 void sair(){
     printf ("Obrigado por usar a calculadora! Até a próxima.");
@@ -53,7 +59,7 @@ printf ("Opção:");
 
     do {
         scanf ("%d", &n);
-    if (n>5){
+    if (n>5||n<1){
         printf ("Entrada invalida, selecione outra opção");
     }
     } while (n>5);
@@ -77,15 +83,19 @@ printf ("Opção:");
     printf ("Deseja realizar outra operação? (s/n)");
     scanf (" %c", &resposta);
     
-        if (resposta=='s'){
+        if (resposta=='s'||resposta=='S'){
             
         }
-    else {
+    else if (resposta=='n'||resposta=='N') {
         sair();
         return 0;
     }
+        else {
+            printf ("Resposta inválida. Por favor,digite 's' para sim e 'n' para não\n");
+            scanf (" %c", &resposta);
+        }
     }
-     } while (resposta=='s');
+     } while (resposta=='s'||resposta=='S');
     
     return 0;
 }
