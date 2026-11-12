@@ -14,7 +14,7 @@ void subtração(){
     scanf ("%f", &a);
     printf ("Digite o segundo número:");
     scanf ("%f", &b);
-    printf ("Resultado: %f - %f = %2.f\n", a,b,a-b);
+    printf ("Resultado: %f - %f = %.2f\n", a,b,a-b);
 }
 void multiplicação(){
     float a,b;
@@ -33,7 +33,7 @@ void divisão(){
     
     while (b==0){
         printf ("Erro: Divisão por zero não é peemitida.\n");
-        printf ("Digite outro número:");
+        printf ("realize outra operação");
         scanf ("%f", &b);
     } 
     printf ("Resultado: %f ÷ %f = %.2f\n", a,b,a/b);
@@ -58,11 +58,15 @@ printf ("5. Sair\n");
 printf ("Opção:");
 
     do {
-        scanf ("%d", &n);
-    if (n>5||n<1){
+        if (scanf ("%d", &n)!=1){
+            printf ("Entrada invalida, selecione outra opção");
+            while (getchar() != '\n');
+            n = 0;
+        }
+    else if  (n!=1 && n!=2 && n!=3 && n!=4 && n!=5){
         printf ("Entrada invalida, selecione outra opção");
     }
-    } while (n>5);
+    } while (n!=1 && n!=2 && n!=3 && n!=4 && n!=5);
     if (n==1){
         soma();
     }
@@ -80,22 +84,22 @@ printf ("Opção:");
         return 0;
     }
     if (n>=1 && n<=4){
+        do{
     printf ("Deseja realizar outra operação? (s/n)");
     scanf (" %c", &resposta);
     
-        if (resposta=='s'||resposta=='S'){
-            
-        }
-    else if (resposta=='n'||resposta=='N') {
-        sair();
-        return 0;
-    }
-        else {
+        if (resposta!='s'&&resposta!='S'&&
+            resposta!='n'&&resposta!='N'){
             printf ("Resposta inválida. Por favor,digite 's' para sim e 'n' para não\n");
-            scanf (" %c", &resposta);
+        }
+        } while (resposta!='s'&&resposta!='S'&&
+            resposta!='n'&& resposta!='N');
+        if (resposta=='n' || resposta=='N'){
+            sair();
+            return 0;
         }
     }
-     } while (resposta=='s'||resposta=='S');
+    } while (resposta=='s'||resposta=='S');
     
     return 0;
 }
