@@ -31,10 +31,9 @@ void divisão(){
     printf ("Digite o segundo número:");
     scanf ("%f", &b);
     
-    while (b==0){
+    if (b==0){
         printf ("Erro: Divisão por zero não é peemitida.\n");
-        printf ("realize outra operação");
-        scanf ("%f", &b);
+        return;
     } 
     printf ("Resultado: %f ÷ %f = %.2f\n", a,b,a/b);
 }
@@ -43,7 +42,7 @@ void sair(){
 }
 
 int main() {
-    int n;
+    float n;
     char resposta;
     
     do { printf (" ===========================\n");
@@ -58,12 +57,12 @@ printf ("5. Sair\n");
 printf ("Opção:");
 
     do {
-        if (scanf ("%d", &n)!=1){
+        if (scanf ("%f", &n)!=1){
             printf ("Entrada invalida, selecione outra opção");
             while (getchar() != '\n');
             n = 0;
         }
-    else if  (n!=1 && n!=2 && n!=3 && n!=4 && n!=5){
+    else if  (n!=1 && n!=2 && n!=3 && n!=4 && n!=5 && n!=(int)n){
         printf ("Entrada invalida, selecione outra opção");
     }
     } while (n!=1 && n!=2 && n!=3 && n!=4 && n!=5);
