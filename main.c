@@ -62,10 +62,10 @@ printf ("Opção:");
             while (getchar() != '\n');
             n = 0;
         }
-    else if  (n!=1 && n!=2 && n!=3 && n!=4 && n!=5 && n!=(int)n){
+    else if  (n<1 || n>5 || n!=(int)n){
         printf ("Entrada invalida, selecione outra opção");
     }
-    } while (n!=1 && n!=2 && n!=3 && n!=4 && n!=5);
+    } while (n<1 || n>5 || n!=(int)n);
     if (n==1){
         soma();
     }
